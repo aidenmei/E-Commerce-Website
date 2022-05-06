@@ -8,4 +8,5 @@ export class Product {
     unitsInStock: number | undefined;
     dateCreated: Date | undefined;
     lastUpdate: Date | undefined;
+    id: string | undefined;
 }
