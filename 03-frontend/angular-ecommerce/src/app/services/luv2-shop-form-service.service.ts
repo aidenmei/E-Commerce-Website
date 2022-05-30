@@ -1,22 +1,20 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { Country } from '../common/country';
+import { map } from 'rxjs/operators';
 import { State } from '../common/state';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Luv2ShopFormServiceService {
+export class Luv2ShopFormService {
 
   private countriesUrl = 'http://localhost:8080/api/countries';
   private statesUrl = 'http://localhost:8080/api/states';
 
-  // inject HttpClient
   constructor(private httpClient: HttpClient) { }
 
-  // this is the coding for get countries
   getCountries(): Observable<Country[]> {
 
     return this.httpClient.get<GetResponseCountries>(this.countriesUrl).pipe(
@@ -34,12 +32,13 @@ export class Luv2ShopFormServiceService {
     );
   }
 
+
   getCreditCardMonths(startMonth: number): Observable<number[]> {
 
     let data: number[] = [];
-
+    
     // build an array for "Month" dropdown list
-    // - start at current month and loop unitl
+    // - start at current month and loop until 
 
     for (let theMonth = startMonth; theMonth <= 12; theMonth++) {
       data.push(theMonth);
@@ -54,7 +53,7 @@ export class Luv2ShopFormServiceService {
 
     // build an array for "Year" downlist list
     // - start at current year and loop for next 10 years
-
+    
     const startYear: number = new Date().getFullYear();
     const endYear: number = startYear + 10;
 
@@ -64,9 +63,9 @@ export class Luv2ShopFormServiceService {
 
     return of(data);
   }
+
 }
 
-// Unwraps the JSON from Spring Data REST _embedded entry
 interface GetResponseCountries {
   _embedded: {
     countries: Country[];
