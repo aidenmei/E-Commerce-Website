@@ -58,7 +58,7 @@
                             <div class="input-space">
                                 <input formControlName="email" type="text">
 
-                                <div *ngIf="email.invalid && (firstName.dirty || email.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
 
                                     <div *ngIf="email.errors.required">
                                         Email is required
@@ -316,7 +316,7 @@
                                 </select>
 
                                 <div *ngIf="creditCardType.invalid && (creditCardType.dirty || creditCardType.touched)" class="alert alert-danger mt-1">
-                                    <div *ngIf="creditCardType.errors.required">
+                                    <div *ngIf="creditCardType.errors.required || creditCardNameOnCard.errors.notOnlyWhitespace">
                                         Credit card type is required
                                     </div>
                                 </div>

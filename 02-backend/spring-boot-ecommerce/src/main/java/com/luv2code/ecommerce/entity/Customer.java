@@ -30,7 +30,7 @@ public class Customer {
     // convenience method
     public void add(Order order) {
 
-        if (orders == null ) {
+        if (orders != null ) {
 
             if (orders == null) {
                 orders = new HashSet<>();
